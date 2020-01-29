@@ -6,7 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flora_ai/home.dart';
 
-import 'crop/cropfeed.dart';
+import 'history/cropfeed.dart';
 
 class StartupPage extends StatefulWidget {
   @override
