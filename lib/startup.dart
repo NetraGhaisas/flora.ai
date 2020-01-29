@@ -74,15 +74,16 @@ class _StartupPageState extends State<StartupPage> {
   AppBar _getAppBar() {
     return AppBar(
       backgroundColor: Theme.of(context).primaryColor,
-      title: Row(children: [
-        Image.asset('images/app icon.png'),
-        Padding(padding: EdgeInsets.only(right: 10)),
-        Text('flora.ai',
-            style: TextStyle(
-                fontFamily: 'Less Sans',
-                fontSize: 20,
-                color: Theme.of(context).accentColor))
-      ]),
+      title: Row(
+        children: [
+          Image.asset('images/app icon.png'),
+          Padding(padding: EdgeInsets.only(right: 10)),
+          Text('flora', 
+          style: TextStyle(fontFamily: 'Less Sans', fontSize: 20, color: Theme.of(context).accentColor)),
+          Text('.ai', 
+          style: TextStyle(fontFamily: 'Less Sans', fontSize: 20, color: Color(0xFFD3CEBA)
+          )
+      )]),
     );
   }
 }
