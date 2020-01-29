@@ -19,7 +19,7 @@ class CropFeedCard extends StatelessWidget {
               children: <Widget>[
                 _getCropPicture(),
                 SizedBox(
-                  width: 30,
+                  width: 10,
                 ),
                 _getCropInfo(context),
               ],

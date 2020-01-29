@@ -1,3 +1,4 @@
+import 'package:flora_ai/gallery.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flora_ai/home.dart';
+import 'package:flora_ai/export.dart';
 
 import 'history/cropfeed.dart';
 
@@ -17,13 +19,13 @@ class StartupPage extends StatefulWidget {
 class _StartupPageState extends State<StartupPage> {
   final List<Tab> tab = <Tab>[
     Tab(
-      text: 'HISTORY',
+      text: 'H I S T O R Y',
     ),
     Tab(
-      text: 'CLICK',
+      text: 'C L I C K',
     ),
     Tab(
-      text: 'EXPORT',
+      text: 'E X P O R T',
     ),
   ];
 
@@ -72,7 +74,7 @@ class _StartupPageState extends State<StartupPage> {
                     _getHistory(context),
                     // Icon(Icons.directions_car,color:Colors.black),
                     _getClick(context),
-                    Icon(Icons.directions_transit),
+                    _getExport(context),
                   ],
                 )),
           )),
@@ -128,6 +130,13 @@ Container _getHistory(BuildContext context) {
 }
 
 Container _getClick(BuildContext context) {
-  Widget click = Container();
+  Widget click = Container(
+    child: PickImageDemo(),
+  );
+  return click;
+}
+
+Container _getExport(BuildContext context) {
+  Widget click = Container(child: ExportPage(),);
   return click;
 }
