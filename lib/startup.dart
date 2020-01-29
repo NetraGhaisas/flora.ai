@@ -8,6 +8,7 @@ import 'package:flora_ai/home.dart';
 
 class StartupPage extends StatefulWidget {
   @override
+  static final String routeName = "/startup";
   _StartupPageState createState() => _StartupPageState();
 }
 
@@ -18,6 +19,9 @@ class _StartupPageState extends State<StartupPage> {
     ),
     Tab(
       text: 'CLICK',
+    ),
+    Tab(
+      text: 'EXPORT',
     ),
   ];
 
@@ -66,6 +70,7 @@ class _StartupPageState extends State<StartupPage> {
                     Text('hello',style:TextStyle(color:Colors.black)),
                     // Icon(Icons.directions_car,color:Colors.black),
                     _getClick(context),
+                    Icon(Icons.directions_transit),
                   ],
                 )),
           )),

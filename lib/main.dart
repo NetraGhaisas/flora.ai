@@ -8,12 +8,16 @@ import 'package:flora_ai/home.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  static final routes = <String, WidgetBuilder>{
+    StartupPage.routeName: (context) => Scaffold(body:SafeArea(child: StartupPage(),)),
+  };
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       // home: HomePage(),
       home: StartupPage(),
       theme: _appTheme,
+      routes: routes,
       debugShowCheckedModeBanner: false,
     );
   }
