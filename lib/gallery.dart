@@ -88,7 +88,7 @@ class _PickImageDemoState extends State<PickImageDemo> {
           ],
         ),
       ) : Center(child: Column(children: <Widget>[
-        Image.asset(name)
+        
       ],),),
     );
   }
