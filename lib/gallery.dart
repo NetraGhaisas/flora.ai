@@ -16,7 +16,7 @@ class _PickImageDemoState extends State<PickImageDemo> {
  
   pickImageFromGallery(ImageSource source) {
     setState(() {
-      imageFile = ImagePicker.pickImage(source: ImageSource.gallery);
+      imageFile = ImagePicker.pickImage(source: source);
     });
   }
  
@@ -70,9 +70,11 @@ class _PickImageDemoState extends State<PickImageDemo> {
             OutlineButton(
               child: Text('CLICK A PICTURE', style: TextStyle(fontSize: 20)),
               splashColor: Theme.of(context).accentColor,
+              padding: EdgeInsets.symmetric(horizontal: 45),
               highlightedBorderColor: Theme.of(context).accentColor,
               onPressed: () {
-                pickImageFromGallery(ImageSource.gallery);
+                print('Pressed');
+                pickImageFromGallery(ImageSource.camera);
               },
             ),
             Padding(padding: EdgeInsets.only(bottom: 60)),
@@ -88,7 +90,16 @@ class _PickImageDemoState extends State<PickImageDemo> {
           ],
         ),
       ) : Center(child: Column(children: <Widget>[
-        Image.asset(name)
+        showImage(),
+        Padding(padding: EdgeInsets.only(bottom: 20),),
+        OutlineButton(
+              child: Text('FIND CROP', style: TextStyle(fontSize: 20)),
+              splashColor: Theme.of(context).accentColor,
+              highlightedBorderColor: Theme.of(context).accentColor,
+              onPressed: () {
+
+              },
+            ),
       ],),),
     );
   }

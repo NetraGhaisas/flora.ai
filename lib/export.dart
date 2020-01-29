@@ -24,7 +24,7 @@ class _ExportPageState extends State<ExportPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             OutlineButton(
-              child: Text('EXPORT', style: TextStyle(fontSize: 20)),
+              child: Text('EXPORT REPOSITORY', style: TextStyle(fontSize: 20)),
               splashColor: Theme.of(context).accentColor,
               highlightedBorderColor: Theme.of(context).accentColor,
               onPressed: () {
@@ -37,6 +37,7 @@ class _ExportPageState extends State<ExportPage> {
             OutlineButton(
               child: Text('EMAIL', style: TextStyle(fontSize: 20)),
               splashColor: Theme.of(context).accentColor,
+              padding: EdgeInsets.symmetric(horizontal: 80),
               highlightedBorderColor: Theme.of(context).accentColor,
               onPressed: () {
                 
