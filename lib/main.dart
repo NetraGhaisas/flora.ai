@@ -1,3 +1,4 @@
+import 'package:flora_ai/startup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -10,7 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      // home: HomePage(),
+      home: StartupPage(),
       theme: _appTheme,
       debugShowCheckedModeBanner: false,
     );
