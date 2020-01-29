@@ -1,3 +1,5 @@
+import 'package:flora_ai/cropinfo.dart';
+import 'package:flora_ai/history/cropdata.dart';
 import 'package:flora_ai/startup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       // home: HomePage(),
       home: StartupPage(),
+      // home:CropInfoPage(new CropData('Wheat', 'Triticum', 'Wheat is a cereal grain', 0)),
       theme: _appTheme,
       routes: routes,
       debugShowCheckedModeBanner: false,
