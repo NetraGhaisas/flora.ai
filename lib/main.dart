@@ -35,7 +35,11 @@ ThemeData _getAppTheme() {
     textTheme: TextTheme(
       body1: TextStyle(
         fontFamily: 'Roboto',
-        fontSize: 14)
+        fontStyle: FontStyle.normal,
+        fontSize: 14),
+        body2: TextStyle(fontFamily: 'Roboto',
+        fontStyle: FontStyle.italic,
+        fontSize: 14),
     )
   );
 }

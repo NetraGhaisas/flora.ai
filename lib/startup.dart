@@ -6,6 +6,9 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flora_ai/home.dart';
+import 'package:flora_ai/export.dart';
+
+import 'crop/cropfeed.dart';
 
 class StartupPage extends StatefulWidget {
   @override
@@ -40,7 +43,7 @@ class _StartupPageState extends State<StartupPage> {
             initialIndex: 1,
             child: Scaffold(
                 appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(100),
+                  preferredSize: Size.fromHeight(screenHeight / 10),
                   child: new SafeArea(
                       child: Container(
                     // color: Theme.of(context).primaryColor,
@@ -68,10 +71,10 @@ class _StartupPageState extends State<StartupPage> {
                 // appBar: AppBar(bottom: TabBar(tabs:tab,),title: Text('flora test',style:TextStyle(color:Colors.black)),),
                 body: TabBarView(
                   children: [
-                    Text('hello', style: TextStyle(color: Colors.black)),
+                    _getHistory(context),
                     // Icon(Icons.directions_car,color:Colors.black),
                     _getClick(context),
-                    Icon(Icons.directions_transit),
+                    _getExport(context),
                   ],
                 )),
           )),
@@ -100,34 +103,26 @@ class _StartupPageState extends State<StartupPage> {
 }
 
 Container _getHistory(BuildContext context) {
-  // Widget history = Container(
-  //   child:Text('Hello', style: TextStyle(color: Colors.black)),
-  // );
-
   Size size = MediaQuery.of(context).size;
   var screenHeight = size.height;
   var screenWidth = size.width;
   Widget history = new Container(
     height: 350,
     width: screenWidth,
-    color: Theme.of(context).accentColor,
+    // color: Theme.of(context).accentColor,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(top: 10, left: 20, right: 20),
-          child: Text('HISTORY',
-              style: TextStyle(color: Theme.of(context).accentColor)),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Padding(
-          padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
-          child: Text("hello",
-              textAlign: TextAlign.justify,
-              style: TextStyle(color: Colors.black, fontSize: 14)),
-        ),
+        // SizedBox(
+        //   height: 10,
+        // ),
+        Container(child: CropFeed()),
+        // Padding(
+        //   padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+        //   child: Text("hello",
+        //       textAlign: TextAlign.justify,
+        //       style: TextStyle(color: Colors.black, fontSize: 14)),
+        // ),
       ],
     ),
   );
@@ -138,5 +133,10 @@ Container _getClick(BuildContext context) {
   Widget click = Container(
     child: PickImageDemo(),
   );
+  return click;
+}
+
+Container _getExport(BuildContext context) {
+  Widget click = Container(child: ExportPage(),);
   return click;
 }
