@@ -20,9 +20,9 @@ dependencies:
   flutter:
     sdk: flutter
   bubble_tab_indicator: "^0.1.4"
-  camera:
-  path_provider:
-  path:
+  # camera:
+  # path_provider:
+  # path:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -69,6 +69,10 @@ flutter:
     - family: Roboto
       fonts:
         - asset: fonts/Roboto-Black.ttf
+        - asset: fonts/Roboto-BlackItalic.ttf
+        - asset: fonts/Roboto-Light.ttf
+        - asset: fonts/Roboto-Medium.ttf
+        - asset: fonts/Roboto-Regular.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
