@@ -23,7 +23,7 @@ class _CropFeedState extends State<CropFeed> {
               //     ? FeedItemCard(feedItems[index])
               //     : Container(width: 325, height: 200, child: Center(child: CircularProgressIndicator())),
               child: CropFeedCard(
-                  new CropData('Test', 'Test', 'Test description', 0)),
+                  new CropData('Wheat', 'Triticum', 'Wheat is a cereal grain', 0)),
             ));
     return Expanded(
       child: listview,

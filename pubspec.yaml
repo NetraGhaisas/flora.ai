@@ -64,8 +64,8 @@ flutter:
   fonts:
     - family: Less Sans
       fonts:
-        - asset: fonts/Less-Light.otf
-  #       - asset: fonts/Schyler-Italic.ttf
+        # - asset: fonts/Less-Light.otf
+        - asset: fonts/Less.otf
   #         style: italic
     - family: Roboto
       fonts:
