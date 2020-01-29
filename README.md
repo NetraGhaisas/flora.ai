@@ -68,9 +68,59 @@ https://todo-fpko6i4yjq-uc.a.run.app
 {
     "success": true
 }
+```
 
+### Update a device
+
+**Definition**
+`POST /update`
+
+**Arguments**
+```json
+{
+    "id": "1",
+    "title": "This is a random title"
+}
+```
+
+**Response**
+- `200 OK` on success
+
+```json
+{
+    "success": true
+}
 
 ```
+
+### Delete a device 
+
+**Definition**
+`DELETE /delete`
+
+**arguments**
+```json
+{
+    "id": "1"
+}
+
+```
+**Response**
+- `200 OK` on success
+```json
+{
+    "success": true
+}
+```
+
+
+
+
+
+
+
+
+
 
 
 
