@@ -58,9 +58,12 @@ class _StartupPageState extends State<StartupPage> {
         children: [
           Image.asset('images/app icon.png'),
           Padding(padding: EdgeInsets.only(right: 10)),
-          Text('flora.ai', 
-          style: TextStyle(fontFamily: 'Less Sans', fontSize: 20, color: Theme.of(context).accentColor))]
-          ),
+          Text('flora', 
+          style: TextStyle(fontFamily: 'Less Sans', fontSize: 20, color: Theme.of(context).accentColor)),
+          Text('.ai', 
+          style: TextStyle(fontFamily: 'Less Sans', fontSize: 20, color: Color(0xFFD3CEBA)
+          )
+      )]),
     );
   }
 }
