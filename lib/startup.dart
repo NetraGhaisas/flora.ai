@@ -24,14 +24,6 @@ class _StartupPageState extends State<StartupPage> {
     ),
   ];
 
-  TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-     _tabController = TabController(vsync: this, length: 2, initialIndex: 1);
-  } 
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -74,7 +66,7 @@ class _StartupPageState extends State<StartupPage> {
                 // appBar: AppBar(bottom: TabBar(tabs:tab,),title: Text('flora test',style:TextStyle(color:Colors.black)),),
                 body: TabBarView(
                   children: [
-                    Text('hello',style:TextStyle(color:Colors.black)),
+                    Text('hello', style: TextStyle(color: Colors.black)),
                     // Icon(Icons.directions_car,color:Colors.black),
                     Icon(Icons.directions_transit),
                     Icon(Icons.directions_transit),
@@ -87,16 +79,20 @@ class _StartupPageState extends State<StartupPage> {
   AppBar _getAppBar() {
     return AppBar(
       backgroundColor: Theme.of(context).primaryColor,
-      title: Row(
-        children: [
-          Image.asset('images/app icon.png'),
-          Padding(padding: EdgeInsets.only(right: 10)),
-          Text('flora', 
-          style: TextStyle(fontFamily: 'Less Sans', fontSize: 20, color: Theme.of(context).accentColor)),
-          Text('.ai', 
-          style: TextStyle(fontFamily: 'Less Sans', fontSize: 20, color: Color(0xFFD3CEBA)
-          )
-      )]),
+      title: Row(children: [
+        Image.asset('images/app icon.png'),
+        Padding(padding: EdgeInsets.only(right: 10)),
+        Text('flora',
+            style: TextStyle(
+                fontFamily: 'Less Sans',
+                fontSize: 20,
+                color: Theme.of(context).accentColor)),
+        Text('.ai',
+            style: TextStyle(
+                fontFamily: 'Less Sans',
+                fontSize: 20,
+                color: Color(0xFFD3CEBA)))
+      ]),
     );
   }
 }
@@ -105,10 +101,10 @@ Container _getHistory(BuildContext context) {
   // Widget history = Container(
   //   child:Text('Hello', style: TextStyle(color: Colors.black)),
   // );
-  
+
   Size size = MediaQuery.of(context).size;
-    var screenHeight = size.height;
-    var screenWidth = size.width;
+  var screenHeight = size.height;
+  var screenWidth = size.width;
   Widget history = new Container(
     height: 350,
     width: screenWidth,
