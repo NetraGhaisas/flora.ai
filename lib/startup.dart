@@ -1,3 +1,4 @@
+import 'package:flora_ai/gallery.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -15,13 +16,13 @@ class StartupPage extends StatefulWidget {
 class _StartupPageState extends State<StartupPage> {
   final List<Tab> tab = <Tab>[
     Tab(
-      text: 'HISTORY',
+      text: 'H I S T O R Y',
     ),
     Tab(
-      text: 'CLICK',
+      text: 'C L I C K',
     ),
     Tab(
-      text: 'EXPORT',
+      text: 'E X P O R T',
     ),
   ];
 
@@ -135,7 +136,7 @@ Container _getHistory(BuildContext context) {
 
 Container _getClick(BuildContext context) {
   Widget click = Container(
-    child: HomePage(),
+    child: PickImageDemo(),
   );
   return click;
 }
