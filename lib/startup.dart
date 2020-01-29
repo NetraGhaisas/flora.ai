@@ -10,11 +10,19 @@ class StartupPage extends StatefulWidget {
   _StartupPageState createState() => _StartupPageState();
 }
 
-class _StartupPageState extends State<StartupPage> {
+class _StartupPageState extends State<StartupPage> with SingleTickerProviderStateMixin{
   final List<Tab> tab = <Tab> [
     Tab(text: 'HISTORY',),
     Tab(text: 'CLICK',),
   ];
+
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+     _tabController = TabController(vsync: this, length: 2, initialIndex: 1);
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -32,19 +40,24 @@ class _StartupPageState extends State<StartupPage> {
               // color: Theme.of(context).primaryColor,
               child: Column(children: <Widget>[
                 new TabBar(tabs: tab,
+                controller: _tabController,
                 unselectedLabelColor: Theme.of(context).primaryColor,
                 dragStartBehavior: DragStartBehavior.down,
                 labelPadding: EdgeInsets.symmetric(vertical: 5),
                 labelColor: Theme.of(context).scaffoldBackgroundColor,
-                indicatorSize: TabBarIndicatorSize.tab,
+                // indicatorSize: TabBarIndicatorSize.tab,
                 indicator: new BubbleTabIndicator(
                 indicatorHeight: 25.0,
                 padding: EdgeInsets.symmetric(horizontal: 0),
                 indicatorColor: Theme.of(context).accentColor,
-
-                tabBarIndicatorSize: TabBarIndicatorSize.tab,
+                // tabBarIndicatorSize: TabBarIndicatorSize.tab,
               ))],),
             )),
+          ),
+          body: TabBarView(children: <Widget>[
+            Text('HISTORY'),
+            Text('CLICK')],
+            // controller: _tabController,
           )),
 )
       ),
