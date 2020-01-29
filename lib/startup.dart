@@ -24,6 +24,14 @@ class _StartupPageState extends State<StartupPage> {
     ),
   ];
 
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+     _tabController = TabController(vsync: this, length: 2, initialIndex: 1);
+  } 
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
