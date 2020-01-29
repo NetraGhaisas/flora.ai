@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
+import 'package:flora_ai/home.dart';
 
 class StartupPage extends StatefulWidget {
   @override
@@ -68,7 +69,7 @@ class _StartupPageState extends State<StartupPage> {
                   children: [
                     Text('hello', style: TextStyle(color: Colors.black)),
                     // Icon(Icons.directions_car,color:Colors.black),
-                    Icon(Icons.directions_transit),
+                    _getClick(context),
                     Icon(Icons.directions_transit),
                   ],
                 )),
@@ -134,7 +135,7 @@ Container _getHistory(BuildContext context) {
 
 Container _getClick(BuildContext context) {
   Widget click = Container(
-    child: Text('Click!'),
+    child: HomePage(),
   );
   return click;
 }
