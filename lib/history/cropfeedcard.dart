@@ -40,7 +40,7 @@ class CropFeedCard extends StatelessWidget {
                     fit: BoxFit.fill,
                     // image: AssetImage("../images/app icon.png"),
                     image: new NetworkImage(
-                        "http://www.excelcropcare.com/images/homepage/overviewbg-res.jpg",
+                        this.crop.imageUrl,
                         scale: 1)))));
 
     return box;

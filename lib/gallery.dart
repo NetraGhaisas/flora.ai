@@ -105,7 +105,7 @@ class _PickImageDemoState extends State<PickImageDemo> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => Container(child:CropInfoPage(CropData('Wheat','Triticum','This is a cereal grain',0))),
+            builder: (context) => Container(child:CropInfoPage(CropData('Wheat','Triticum','This is a cereal grain',0, imageUrl: _uploadedFileURL))),
           ),
         );
     }
