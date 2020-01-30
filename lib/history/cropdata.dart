@@ -1,8 +1,8 @@
-class CropData{
+class CropData {
   String name, species, description, imageUrl;
-  int dateAdded;
+  int dateAdded, id;
 
-  CropData(this.name,this.species,this.description,this.dateAdded,{this.imageUrl='../images/app_icon.png'});
+  CropData(this.id, this.name, this.species, this.description, {this.imageUrl});
 
   @override
   String toString() {
@@ -10,6 +10,13 @@ class CropData{
     return super.toString();
   }
 
-  
-
+  static CropData fromJson(Map<String, dynamic> parsedJson) {
+    return CropData(
+      parsedJson['id'],
+      parsedJson['name'],
+      parsedJson['species'],
+      parsedJson['description'],
+      imageUrl: parsedJson['url'] != null ? parsedJson['url'] : '',
+    );
+  }
 }
