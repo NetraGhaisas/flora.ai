@@ -61,7 +61,7 @@ class CropInfoPage extends StatelessWidget {
 
   _getCropPicture() {
     SizedBox box = SizedBox(
-        height: 250,
+        height: 230,
         child: Container(
             decoration: BoxDecoration(
                 image: new DecorationImage(
