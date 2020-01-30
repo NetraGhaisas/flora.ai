@@ -1,6 +1,5 @@
 class CropData {
-  String name, species, description, imageUrl;
-  int dateAdded, id;
+  String name, species, description, imageUrl, id;
 
   CropData(this.id, this.name, this.species, this.description, {this.imageUrl});
 
