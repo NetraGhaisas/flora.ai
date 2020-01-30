@@ -1,5 +1,4 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flora_ai/uploader.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -7,15 +6,25 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart' as Path;
 import 'package:path/path.dart';
  
+import 'package:flora_ai/cropinfo.dart';
+import 'package:flora_ai/history/cropdata.dart';
+import 'package:flora_ai/http/Config.dart';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'package:http/http.dart' as http;
+import 'http/http-client.dart';
+
 class PickImageDemo extends StatefulWidget {
+
   PickImageDemo() : super();
- 
+
   // final String title = "Flutter Pick Image demo";
- 
+
   @override
   _PickImageDemoState createState() => _PickImageDemoState();
 }
- 
+
 class _PickImageDemoState extends State<PickImageDemo> {
   Future<File> imageFile;
   File _image;
@@ -25,18 +34,18 @@ class _PickImageDemoState extends State<PickImageDemo> {
 
   StorageUploadTask _uploadTask;
  
-  Future chooseFile(ImageSource source) async {    
+  Future chooseFile(ImageSource source, BuildContext context) async {    
    await ImagePicker.pickImage(source: source).then((image) {    
      setState(() {    
        _image = image;    
      });    
    });
    print('iage chosen');
-   uploadFile();
+   uploadFile(context);
   
   }
 
- Future uploadFile() async {
+ Future uploadFile(BuildContext context) async {
    print('in upload');
    StorageReference storageReference = FirebaseStorage.instance    
        .ref()    
@@ -51,7 +60,8 @@ class _PickImageDemoState extends State<PickImageDemo> {
        _uploadedFileURL = fileURL;
        print(_uploadedFileURL); 
      });
-   });    
+   });
+   _findCrop(context);    
  }
  
   Widget showImage() {
@@ -79,7 +89,32 @@ class _PickImageDemoState extends State<PickImageDemo> {
       },
     );
   }
- 
+
+  _findCrop(BuildContext context) async {
+    String id = "10";
+    String title="test string";
+    String baseUrl = AppConfig.baseUrl;
+    HttpClient httpClient = new HttpClient(baseUrl);
+    Map map = Map();
+    map["id"] = id;
+    map["title"] = title;
+    http.Response response = await httpClient.post('/add',data:map);
+    if(response.statusCode==200){
+      print('success'+response.body);
+      imageFile = null;
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => Container(child:CropInfoPage(CropData('Wheat','Triticum','This is a cereal grain',0))),
+          ),
+        );
+    }
+    else{
+      print('failed'+response.body);
+      Navigator.of(context).popAndPushNamed('/startup');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +131,7 @@ class _PickImageDemoState extends State<PickImageDemo> {
               highlightedBorderColor: Theme.of(context).accentColor,
               onPressed: () {
                 // pickImageFromGallery(ImageSource.gallery);
-                chooseFile(ImageSource.gallery);
+                chooseFile(ImageSource.gallery, context);
               },
             ),
             Padding(padding: EdgeInsets.only(bottom: 20)),
@@ -110,7 +145,7 @@ class _PickImageDemoState extends State<PickImageDemo> {
               onPressed: () {
                 print('Pressed');
                 // pickImageFromGallery(ImageSource.camera);
-                chooseFile(ImageSource.camera);
+                chooseFile(ImageSource.camera, context);
               },
             ),
             Padding(padding: EdgeInsets.only(bottom: 60)),

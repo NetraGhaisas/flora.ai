@@ -107,6 +107,11 @@ Container _getHistory(BuildContext context) {
   var screenHeight = size.height;
   var screenWidth = size.width;
   Widget history = new Container(
+    // decoration: BoxDecoration(
+    //     gradient: LinearGradient(
+    //         begin: Alignment.bottomCenter,
+    //         end: Alignment.topCenter,
+    //         colors: [Color(0xFFEEE7CD), Colors.white])),
     height: 350,
     width: screenWidth,
     // color: Theme.of(context).accentColor,
@@ -131,12 +136,24 @@ Container _getHistory(BuildContext context) {
 
 Container _getClick(BuildContext context) {
   Widget click = Container(
+    // decoration: BoxDecoration(
+    //     gradient: LinearGradient(
+    //         begin: Alignment.bottomCenter,
+    //         end: Alignment.topCenter,
+    //         colors: [Color(0xFFEEE7CD), Colors.white])),
     child: PickImageDemo(),
   );
   return click;
 }
 
 Container _getExport(BuildContext context) {
-  Widget click = Container(child: ExportPage(),);
+  Widget click = Container(
+    // decoration: BoxDecoration(
+    //     gradient: LinearGradient(
+    //         begin: Alignment.bottomCenter,
+    //         end: Alignment.topCenter,
+    //         colors: [Color(0xFFEEE7CD), Colors.white])),
+    child: ExportPage(),
+  );
   return click;
 }
