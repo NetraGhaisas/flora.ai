@@ -17,6 +17,7 @@ class StartupPage extends StatefulWidget {
 }
 
 class _StartupPageState extends State<StartupPage> {
+  
   final List<Tab> tab = <Tab>[
     Tab(
       text: 'H I S T O R Y',
@@ -28,6 +29,8 @@ class _StartupPageState extends State<StartupPage> {
       text: 'E X P O R T',
     ),
   ];
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -100,60 +103,86 @@ class _StartupPageState extends State<StartupPage> {
       ]),
     );
   }
-}
 
-Container _getHistory(BuildContext context) {
-  Size size = MediaQuery.of(context).size;
-  var screenHeight = size.height;
-  var screenWidth = size.width;
-  Widget history = new Container(
-    // decoration: BoxDecoration(
-    //     gradient: LinearGradient(
-    //         begin: Alignment.bottomCenter,
-    //         end: Alignment.topCenter,
-    //         colors: [Color(0xFFEEE7CD), Colors.white])),
-    height: 350,
-    width: screenWidth,
-    // color: Theme.of(context).accentColor,
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        // SizedBox(
-        //   height: 10,
-        // ),
-        Container(child: CropFeed()),
-        // Padding(
-        //   padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
-        //   child: Text("hello",
-        //       textAlign: TextAlign.justify,
-        //       style: TextStyle(color: Colors.black, fontSize: 14)),
-        // ),
-      ],
-    ),
-  );
-  return history;
-}
+  // _getAlertBox(BuildContext context) {
+  //   // flutter defined function
+  //   showDialog(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       // return object of type Dialog
+  //       return AlertDialog(
+  //         title: new Text("Alert Dialog title"),
+  //         content: new Text("Alert Dialog body"),
+  //         actions: <Widget>[
+  //           // usually buttons at the bottom of the dialog
+  //           new FlatButton(
+  //             child: new Text("OK"),
+  //             onPressed: () {
+  //               setState(() {
+  //                 startup = false;
+  //               });
+  //               Navigator.of(context).pop();
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
 
-Container _getClick(BuildContext context) {
-  Widget click = Container(
-    // decoration: BoxDecoration(
-    //     gradient: LinearGradient(
-    //         begin: Alignment.bottomCenter,
-    //         end: Alignment.topCenter,
-    //         colors: [Color(0xFFEEE7CD), Colors.white])),
-    child: PickImageDemo(),
-  );
-  return click;
-}
+  Container _getHistory(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    var screenHeight = size.height;
+    var screenWidth = size.width;
+    Widget history = new Container(
+      // decoration: BoxDecoration(
+      //     gradient: LinearGradient(
+      //         begin: Alignment.bottomCenter,
+      //         end: Alignment.topCenter,
+      //         colors: [Color(0xFFEEE7CD), Colors.white])),
+      height: 350,
+      width: screenWidth,
+      // color: Theme.of(context).accentColor,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          // SizedBox(
+          //   height: 10,
+          // ),
+          Container(child: CropFeed()),
+          // Padding(
+          //   padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+          //   child: Text("hello",
+          //       textAlign: TextAlign.justify,
+          //       style: TextStyle(color: Colors.black, fontSize: 14)),
+          // ),
+        ],
+      ),
+    );
+    return history;
+  }
 
-Container _getExport(BuildContext context) {
-  Widget click = Container(
-    // decoration: BoxDecoration(
-    //     gradient: LinearGradient(
-    //         begin: Alignment.bottomCenter,
-    //         end: Alignment.topCenter,
-    //         colors: [Color(0xFFEEE7CD), Colors.white])),
-    child: ExportPage(),
-  );
-  return click;
+  Container _getClick(BuildContext context) {
+    Widget click = Container(
+      // decoration: BoxDecoration(
+      //     gradient: LinearGradient(
+      //         begin: Alignment.bottomCenter,
+      //         end: Alignment.topCenter,
+      //         colors: [Color(0xFFEEE7CD), Colors.white])),
+      child: PickImageDemo(),
+    );
+    return click;
+  }
+
+  Container _getExport(BuildContext context) {
+    Widget click = Container(
+      // decoration: BoxDecoration(
+      //     gradient: LinearGradient(
+      //         begin: Alignment.bottomCenter,
+      //         end: Alignment.topCenter,
+      //         colors: [Color(0xFFEEE7CD), Colors.white])),
+      child: ExportPage(),
+    );
+    return click;
+  }
 }

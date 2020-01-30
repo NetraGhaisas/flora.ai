@@ -7,6 +7,7 @@ import 'package:flutter/rendering.dart';
 
 class HomePage extends StatefulWidget {
   @override
+  static final routeName = '/home';
   _HomePageState createState() => _HomePageState();
 }
 
@@ -14,37 +15,45 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(backgroundColor: Theme.of(context).primaryColor,
-      // title: Row(children: <Widget>[
-      //   Text('flora', 
-      //         style: TextStyle(fontFamily: 'Less Sans', fontSize: 20, color: Theme.of(context).accentColor)),
-      //       Text('.ai', style: TextStyle(fontFamily: 'Less Sans', fontSize: 20, color: Color(0xFFD3CEBA)
-      //     )),
-      // ],),),
-    //   body: Center(child:
-    //   Column(children: <Widget>[
-    //     Padding(padding: EdgeInsets.only(bottom: 20)),
-    //     Image.asset('images/app icon.png', width: 200, height: 200),
-    //     Padding(padding: EdgeInsets.only(bottom: 10)),
-    //     Padding(padding: EdgeInsets.only(bottom: 20)),
-    //     RaisedButton(color: Theme.of(context).accentColor,
-    //     textColor: Theme.of(context).scaffoldBackgroundColor,
-    //     child: Text('CLICK FROM CAMERA', style: TextStyle(fontFamily: 'Roboto', fontSize: 12),),
-    //     // shape: ShapeBorder(RoundedRectangleBorder()),
-    //     onPressed: (){
-    //       print('Pressed');
-    //     },
-    //   ),
-    //   Padding(padding: EdgeInsets.only(bottom: 10)),
-    //     RaisedButton(color: Theme.of(context).accentColor,
-    //     textColor: Theme.of(context).scaffoldBackgroundColor,
-    //     child: Text('IMPORT FROM GALLERY', style: TextStyle(fontFamily: 'Roboto', fontSize: 12),),
-    //     onPressed: (){
-    //       print('Pressed');
-    //     },
-    //   )]),
-    // )
+      // appBar: _getAppBar(context),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            // _getCropPicture(),
+            SizedBox(
+              width: 170,
+              height: 160,
+              child: Text('Welcome to flora.ai.\n\nMake sure that the picture is taken in adequate light and the crop is in focus. \n\nEnsure that the leaves/flowers are highighted in your picture',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Colors.orange,
+                      fontFamily: 'Roboto',
+                      fontStyle: FontStyle.normal,
+                      fontSize: 16)),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            // _getCropInfo(context),
+            Padding(padding: EdgeInsets.only(bottom: 30)),
+            Image.asset(
+              'images/app icon.png',
+              height: 150,
+            ),
+            Padding(padding: EdgeInsets.only(bottom: 30)),
+            OutlineButton(
+              child: Text('OK', style: TextStyle(fontSize: 20)),
+              splashColor: Theme.of(context).accentColor,
+              highlightedBorderColor: Theme.of(context).accentColor,
+              onPressed: () {
+                // pickImageFromGallery(ImageSource.gallery);
+                Navigator.of(context).pushNamed('/startup');
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
-    
 }

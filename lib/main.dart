@@ -12,6 +12,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   static final routes = <String, WidgetBuilder>{
     StartupPage.routeName: (context) => Scaffold(body:SafeArea(child: StartupPage(),)),
+    HomePage.routeName: (context)=>Scaffold(body:SafeArea(child: HomePage(),))
   };
   @override
   Widget build(BuildContext context) {
