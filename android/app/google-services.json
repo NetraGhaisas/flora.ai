@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "13200761954",
+    "firebase_url": "https://flora-ai.firebaseio.com",
+    "project_id": "flora-ai",
+    "storage_bucket": "flora-ai.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:13200761954:android:a67eebe7589953c9e99d3b",
+        "android_client_info": {
+          "package_name": "com.example.flora_ai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "13200761954-6lf1u82ul3t8gid453o8348c7hkhv5oe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2HI9oW31U8t31_tscESyV9xroS8GeTi8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "13200761954-6lf1u82ul3t8gid453o8348c7hkhv5oe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

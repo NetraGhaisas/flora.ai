@@ -1,6 +1,11 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flora_ai/uploader.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:path/path.dart' as Path;
+import 'package:path/path.dart';
  
 class PickImageDemo extends StatefulWidget {
   PickImageDemo() : super();
@@ -13,12 +18,41 @@ class PickImageDemo extends StatefulWidget {
  
 class _PickImageDemoState extends State<PickImageDemo> {
   Future<File> imageFile;
+  File _image;
+  String _uploadedFileURL;
+  final FirebaseStorage _storage =
+      FirebaseStorage(storageBucket: 'gs://flora-ai.appspot.com');
+
+  StorageUploadTask _uploadTask;
  
-  pickImageFromGallery(ImageSource source) {
-    setState(() {
-      imageFile = ImagePicker.pickImage(source: source);
-    });
+  Future chooseFile(ImageSource source) async {    
+   await ImagePicker.pickImage(source: source).then((image) {    
+     setState(() {    
+       _image = image;    
+     });    
+   });
+   print('iage chosen');
+   uploadFile();
+  
   }
+
+ Future uploadFile() async {
+   print('in upload');
+   StorageReference storageReference = FirebaseStorage.instance    
+       .ref()    
+       .child('crops/${Path.basename(_image.path)}}');
+       print('ref created'); 
+   StorageUploadTask uploadTask = storageReference.putFile(_image);
+   print('upload task created');   
+   await uploadTask.onComplete;    
+   print('File Uploaded');    
+   storageReference.getDownloadURL().then((fileURL) {    
+     setState(() {    
+       _uploadedFileURL = fileURL;
+       print(_uploadedFileURL); 
+     });
+   });    
+ }
  
   Widget showImage() {
     return FutureBuilder<File>(
@@ -52,7 +86,7 @@ class _PickImageDemoState extends State<PickImageDemo> {
       // appBar: AppBar(
       //   title: Text(widget.title),
       // ),
-      body: imageFile==null ?Center(
+      body: _image==null ?Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -61,7 +95,8 @@ class _PickImageDemoState extends State<PickImageDemo> {
               splashColor: Theme.of(context).accentColor,
               highlightedBorderColor: Theme.of(context).accentColor,
               onPressed: () {
-                pickImageFromGallery(ImageSource.gallery);
+                // pickImageFromGallery(ImageSource.gallery);
+                chooseFile(ImageSource.gallery);
               },
             ),
             Padding(padding: EdgeInsets.only(bottom: 20)),
@@ -74,33 +109,17 @@ class _PickImageDemoState extends State<PickImageDemo> {
               highlightedBorderColor: Theme.of(context).accentColor,
               onPressed: () {
                 print('Pressed');
-                pickImageFromGallery(ImageSource.camera);
+                // pickImageFromGallery(ImageSource.camera);
+                chooseFile(ImageSource.camera);
               },
             ),
             Padding(padding: EdgeInsets.only(bottom: 60)),
             Image.asset('images/app icon.png', height: 200,),
-            // OutlineButton(
-            //   child: Text('FIND CROP', style: TextStyle(fontSize: 20)),
-            //   splashColor: Theme.of(context).accentColor,
-            //   highlightedBorderColor: Theme.of(context).accentColor,
-            //   onPressed: () {
-            //     pickImageFromGallery(ImageSource.gallery);
-            //   },
-            // ),
           ],
         ),
-      ) : Center(child: Column(children: <Widget>[
-        showImage(),
-        Padding(padding: EdgeInsets.only(bottom: 20),),
-        OutlineButton(
-              child: Text('FIND CROP', style: TextStyle(fontSize: 20)),
-              splashColor: Theme.of(context).accentColor,
-              highlightedBorderColor: Theme.of(context).accentColor,
-              onPressed: () {
-
-              },
-            ),
-      ],),),
+      ) : 
+      // Uploader(file: _image),
+      Container(),
     );
   }
 }
