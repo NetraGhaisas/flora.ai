@@ -14,7 +14,7 @@ class CropFeed extends StatefulWidget {
 
 class _CropFeedState extends State<CropFeed> {
   bool dataAvailable = false;
-  List<CropData> cropList = List();
+  List cropList = List();
   var cropItems;
   var httpClient;
 
@@ -36,19 +36,23 @@ class _CropFeedState extends State<CropFeed> {
 
   @override
   Widget build(BuildContext context) {
+    List cropItems = new List();
+    if (this.dataAvailable) {
+      cropItems = this.cropList;
+    }
     var listview = ListView.builder(
         physics: ClampingScrollPhysics(),
         shrinkWrap: true,
         scrollDirection: Axis.vertical,
-        // itemCount: feedItems.length,
-        itemCount: 4,
+        itemCount: cropItems.length,
+        // itemCount: 4,
         itemBuilder: (BuildContext context, int index) => Card(
               margin: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
               // child: this.dataAvailable
               //     ? FeedItemCard(feedItems[index])
               //     : Container(width: 325, height: 200, child: Center(child: CircularProgressIndicator())),
               child: CropFeedCard(
-                  new CropData('Wheat', 'Triticum', 'Wheat is a cereal grain', 0)),
+                  new CropData(cropItems[index]['id'].toString(), cropItems[index]['name'], cropItems[index]['species'], cropItems[index]['desc'],)),
             ));
     return Expanded(
       child: listview,
@@ -56,11 +60,22 @@ class _CropFeedState extends State<CropFeed> {
   }
 
   _getData() async {
-    //print('id: ${id}');
+    print('in get data');
     var response = await httpClient.get("/list");
-    Map jsonMap = jsonDecode(utf8.decode(response.bodyBytes));
-    //print('Response: ${response.statusCode}');
-    //print('Map: $jsonMap');
-    return jsonMap["list"];
+    print('after get');
+    var jsonMap = jsonDecode(utf8.decode(response.bodyBytes));
+    print('Response: ${response.statusCode}');
+    print('Map: $jsonMap');
+    // var flag=1;
+    List cropList = [];
+    for(var i=0; i<jsonMap.length; i++){
+      print('i: $i');
+      if(jsonMap[i].containsKey('id') && jsonMap[i].containsKey('name') && jsonMap[i].containsKey('desc') && jsonMap[i].containsKey('species')){
+        print('val: $jsonMap[i]');
+        cropList.add(jsonMap[i]);
+      }
+    }
+    print('CropList: $cropList');
+    return cropList;
   }
 }

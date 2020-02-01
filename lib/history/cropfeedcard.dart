@@ -38,10 +38,10 @@ class CropFeedCard extends StatelessWidget {
             decoration: BoxDecoration(
                 image: new DecorationImage(
                     fit: BoxFit.fill,
-                    // image: AssetImage("../images/app icon.png"),
-                    image: new NetworkImage(
-                        this.crop.imageUrl,
-                        scale: 1)))));
+                    image: AssetImage("images/app icon.png"),
+                    // image: NetworkImage(
+                    //     this.crop.imageUrl,)
+                        ))));
 
     return box;
   }

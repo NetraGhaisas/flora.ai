@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // home: HomePage(),
-      home: StartupPage(),
+      home: HomePage(),
+      // home: StartupPage(),
       // home:CropInfoPage(new CropData('Wheat', 'Triticum', 'Wheat is a cereal grain', 0)),
       theme: _appTheme,
       routes: routes,
